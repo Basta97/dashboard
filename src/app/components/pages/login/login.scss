@@ -1,0 +1,80 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    padding: 1rem;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .card-header {
+        background-color: var(--secondary-color);
+        color: white;
+        border-bottom: none;
+        padding: 1.5rem 1rem;
+
+        h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+    }
+
+    .card-body {
+        padding: 2rem;
+
+        .form-control {
+            border: 1px solid #ced4da;
+            padding: 0.75rem;
+            border-radius: 5px;
+
+            &:focus {
+                border-color: var(--secondary-color);
+                box-shadow: 0 0 0 0.2rem rgba(197, 216, 157, 0.25); // varied secondary color opacity
+            }
+        }
+
+        .form-label {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+    }
+
+    .btn-custom {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.75rem;
+        font-weight: 600;
+        border: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: var(--success-color);
+        }
+    }
+
+    .card-footer {
+        background-color: white;
+        border-top: none;
+        padding-bottom: 1.5rem;
+
+        a {
+            color: var(--success-color);
+            font-weight: 600;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                color: var(--dark-color);
+            }
+        }
+    }
+}

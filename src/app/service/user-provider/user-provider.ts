@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../model/user';
 import { signal } from '@angular/core';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class UserProvider {
   user = signal<User | null>(null);
   users = signal<User[]>([]);
-  constructor() {
+  constructor(private router: Router) {
     this.users.set([
       { id: 1, name: 'Ahmed', email: 'john.doe@example.com', role: 'Admin' ,password:'123456'},
       { id: 2, name: 'Basta', email: 'jane.smith@example.com', role: 'User' ,password:'123456'},
@@ -23,7 +24,9 @@ export class UserProvider {
   login(email: string, password: string) {
     const user = this.users().find((user) => user.email === email && user.password === password);
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user.id));
+      localStorage.setItem('role', JSON.stringify(user.role));
+      localStorage.setItem('name', JSON.stringify(user.name));
       this.user.set(user);
 
       return user;
@@ -34,7 +37,10 @@ export class UserProvider {
   }
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
     this.user.set(null);
+    this.router.navigate(['/login']);
   }
   
 

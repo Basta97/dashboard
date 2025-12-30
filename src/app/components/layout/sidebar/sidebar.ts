@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LayoutService } from '../../../service/layout.service';
+import { UserProvider } from '../../../service/user-provider/user-provider';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,5 +14,6 @@ import { LayoutService } from '../../../service/layout.service';
   }
 })
 export class Sidebar {
+  userProvider = inject(UserProvider);  
   layoutService = inject(LayoutService);
 }

@@ -1,1 +1,67 @@
-<p>register works!</p>
+<div class="register-container">
+    <div class="card register-card">
+        <div class="card-header text-center">
+            <h3>Register</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onSumbit()">
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" formControlName="fullName" class="form-control" id="fullName" placeholder="Enter your full name">
+                    @if(registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched){
+                        <small class="text-danger">
+                        Please enter a valid full name.
+                    </small>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter your email">
+                    @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+                        <small class="text-danger">
+                        Please enter a valid email.
+                    </small>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Enter your password">
+                    @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
+                        <small class="text-danger">
+                        Please enter a valid password.
+                    </small>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+                        placeholder="Confirm your password">
+                        @if(registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched){
+                            <small class="text-danger">
+                            Please enter a valid confirm password.
+                        </small>
+                        }
+                </div>
+                <div class="d-grid gap-2">
+                    @if(isLoading()){ 
+                <div class="d-flex justify-content-center ">
+                    <div class="spinner-border " role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                }
+                @else{
+                <div class="d-grid gap-2">
+                    <button [disabled]="registerForm.invalid" type="submit" class="btn btn-custom">Register</button>
+                </div>
+                }
+
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <p>Already have an account? <a routerLink="/login">Login here</a></p>
+        </div>
+    </div>
+</div>

@@ -9,30 +9,13 @@ import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
   {
-    path: 'dashboard',
-    component: Content,
-    children: [
-      {
-        path: 'overview',
-        component: Overview,
-        // canActivate: [authGuard]
-      },
-      {
-        path: 'profile/:id',
-        component: Profile,
-        // canActivate: [authGuard]
-      },
-      {
-        path: 'setting',
-        component: Setting,
-        // canActivate: [authGuard]
-      },
-      {
-        path: '',
-        redirectTo: 'overview',
-        pathMatch: 'full'
-      }
-    ]
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path:'**',
+    redirectTo:'/'
   },
   {
     path: 'login',
@@ -42,9 +25,32 @@ export const routes: Routes = [
     path: 'register',
     component: Register,
   },
+
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    path: 'dashboard',
+    component: Content,
+    children: [
+      {
+        path: 'overview',
+        component: Overview,
+        canActivate: [authGuard]
+      },
+      {
+        path: 'profile/:id',
+        component: Profile,
+        canActivate: [authGuard]
+      },
+      {
+        path: 'setting',
+        component: Setting,
+        canActivate: [authGuard]
+      },
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      }
+    ]
   }
+
 ];

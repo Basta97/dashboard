@@ -1,1 +1,47 @@
-<p>login works!</p>
+<div class="login-container">
+    <div class="card login-card">
+        <div class="card-header text-center">
+            <h3>Login</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSumbit()">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" formControlName="email" class="form-control" id="email"
+                        placeholder="Enter your email">
+                    @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched){
+                        <small class="text-danger">
+                        Please enter a valid email.
+                    </small>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control" id="password"
+                        placeholder="Enter your password">
+                    @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+                        <small class="text-danger">
+                        Please enter a valid password.
+                    </small>
+                    }
+                </div>
+                @if(isLoading()){ 
+                <div class="d-flex justify-content-center ">
+                    <div class="spinner-border " role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                }
+                @else{
+                <div class="d-grid gap-2">
+                    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-custom">Login</button>
+                </div>
+                }
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+        </div>
+    </div>
+</div>
