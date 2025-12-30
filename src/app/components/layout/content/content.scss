@@ -1,5 +1,18 @@
-.content {
+.content-wraper {
+  display: flex;
   height: 100vh;
-  flex: 2;
+  width: 100%;
+  overflow: hidden;
+
+  .stretch {
+    flex: 1;
+  }
 }
 
+.content {
+  // height: 100vh; // removed as it is inside wraper
+  // flex: 2; // removed in favor of stretch
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

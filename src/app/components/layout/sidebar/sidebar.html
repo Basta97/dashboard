@@ -3,25 +3,32 @@
   <div class="logo">
     <h2>Dashboard</h2>
   </div>
-  
+
   <ul class="nav-links">
     <li>
-      <a routerLink="/overview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="layoutService.closeSidebar()">
+      <a routerLink="/dashboard/overview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        (click)="layoutService.closeSidebar()">
         <i class="icon">🏠</i>
         <span>Overview</span>
       </a>
     </li>
     <li>
-      <a routerLink="/profile/5" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+      <a routerLink="/dashboard/profile/5" routerLinkActive="active" (click)="layoutService.closeSidebar()">
         <i class="icon">👤</i>
         <span>Profile</span>
       </a>
     </li>
     <li>
-      <a routerLink="/setting" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+      <a routerLink="/dashboard/setting" routerLinkActive="active" (click)="layoutService.closeSidebar()">
         <i class="icon">⚙️</i>
         <span>Settings</span>
       </a>
     </li>
   </ul>
+  <div class="logout">
+    <a >
+      <i class="icon">🚪</i>
+      <span>Logout</span>
+    </a>
+  </div>
 </aside>

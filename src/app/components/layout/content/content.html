@@ -1,5 +1,7 @@
-<main class="content">
-  <app-header></app-header>
-  
-  <ng-content></ng-content>
+<main class="content-wraper">
+  <app-sidebar></app-sidebar>
+  <div class="content stretch">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
 </main>
