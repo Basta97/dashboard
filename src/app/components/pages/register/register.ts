@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { UserProvider } from '../../../service/user-provider/user-provider';
 import { User } from '../../../model/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { User } from '../../../model/user';
   styleUrl: './register.scss',
 })
 export class Register {
+  toastr = inject(ToastrService);
   isLoading = signal(false);
   constructor(private router: Router) { }
   userProvider = inject(UserProvider);
@@ -25,8 +27,16 @@ export class Register {
   })
 
   onSumbit(){
-    console.log(this.registerForm.value);
-    this.userProvider.registerUser(this.registerForm.value as User);
+    this.isLoading.set(true);
+    setTimeout(() => {
+      this.isLoading.set(false);
+      console.log(this.registerForm.value);
+      this.userProvider.registerUser(this.registerForm.value as User);
+      
+      this.toastr.success('Register successful');
+      this.router.navigate(['/login']);
+    }, 1000);
+    
   }
 
 }

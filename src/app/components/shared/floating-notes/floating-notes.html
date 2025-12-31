@@ -1,0 +1,28 @@
+<div class="floating-notes-wrapper" [ngClass]="{'open': isOpen()}">
+    <div class="notes-list-container">
+        <div class="list-header">
+            <h4>My Notes</h4>
+            <span class="count">{{ noteProvider.notes().length }}</span>
+        </div>
+        <div class="list-body">
+            @if (noteProvider.notes().length === 0) {
+            <p class="empty-state">No notes added yet.</p>
+            } @else {
+            @for (note of noteProvider.notes(); track note.id) {
+            <div class="note-item" [style.border-left-color]="note.color">
+                <p class="content">{{ note.content }}</p>
+                <small class="date">{{ note.date | date:'shortTime' }}</small>
+            </div>
+            }
+            }
+        </div>
+    </div>
+
+    <button class="fab-btn" (click)="toggle()">
+        @if (isOpen()) {
+        <span class="icon">×</span>
+        } @else {
+        <span class="icon">📝</span>
+        }
+    </button>
+</div>

@@ -5,6 +5,8 @@ import { Setting } from './components/pages/setting/setting';
 import { Login } from './components/pages/login/login';
 import { Register } from './components/pages/register/register';
 import { Content } from './components/layout/content/content';
+import { News } from './components/pages/news/news';
+import { Notes } from './components/pages/notes/notes';
 import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
@@ -13,10 +15,7 @@ export const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path:'**',
-    redirectTo:'/'
-  },
+
   {
     path: 'login',
     component: Login,
@@ -46,11 +45,25 @@ export const routes: Routes = [
         canActivate: [authGuard]
       },
       {
+        path: 'news',
+        component: News,
+        canActivate: [authGuard]
+      },
+      {
+        path: 'notes',
+        component: Notes,
+        canActivate: [authGuard]
+      },
+      {
         path: '',
         redirectTo: 'overview',
         pathMatch: 'full'
       }
     ]
-  }
+  },
 
+  {
+    path: '**',
+    redirectTo: 'login'
+  }
 ];

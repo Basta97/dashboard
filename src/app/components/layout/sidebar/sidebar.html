@@ -1,7 +1,7 @@
 <div class="sidebar-overlay" (click)="layoutService.closeSidebar()"></div>
 <aside class="sidebar">
   <div class="logo">
-    <h2>Dashboard</h2>
+    <h2>{{ settingProvider.dashboardTitle() }}</h2>
   </div>
 
   <ul class="nav-links">
@@ -13,7 +13,8 @@
       </a>
     </li>
     <li>
-      <a routerLink="/dashboard/profile/5" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+      <a [routerLink]="['/dashboard/profile', userId()]" routerLinkActive="active"
+        (click)="layoutService.closeSidebar()">
         <i class="icon">👤</i>
         <span>Profile</span>
       </a>
@@ -24,7 +25,22 @@
         <span>Settings</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/dashboard/news" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+        <i class="icon">📰</i>
+        <span>News</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/notes" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+        <i class="icon">📝</i>
+        <span>Notes</span>
+      </a>
+    </li>
   </ul>
+  <div class="text-center">
+    <span>{{ dataprovider.formattedTime() }}</span>
+  </div>
   <div class="logout">
     <a (click)="userProvider.logout()">
       <i class="icon">🚪</i>

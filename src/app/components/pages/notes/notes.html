@@ -1,0 +1,30 @@
+<div class="notes-container">
+    <div class="header">
+        <h3>Sticky Notes</h3>
+        <form [formGroup]="noteForm" (ngSubmit)="addNote()" class="add-note-form">
+            <input type="text" formControlName="content" class="form-control" placeholder="Add a new note..." />
+            <div class="color-picker">
+                @for (color of colors; track $index) {
+                <div class="color-circle" [style.background-color]="color"
+                    [class.selected]="noteForm.value.color === color" (click)="noteForm.patchValue({color: color})">
+                </div>
+                }
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="noteForm.invalid">Add Note</button>
+        </form>
+    </div>
+
+    <div class="notes-grid">
+        @for (note of noteProvider.notes(); track note.id) {
+        <div class="note-card" [style.background-color]="note.color">
+            <button class="delete-btn" (click)="deleteNote(note.id)">×</button>
+            <div class="note-content">
+                <p>{{ note.content }}</p>
+            </div>
+            <div class="note-footer">
+                <small>{{ note.date | date:'shortDate' }}</small>
+            </div>
+        </div>
+        }
+    </div>
+</div>

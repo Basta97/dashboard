@@ -3,6 +3,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserProvider } from '../../../service/user-provider/user-provider';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { UserProvider } from '../../../service/user-provider/user-provider';
   styleUrl: './login.scss',
 })
 export class Login {
+  toastr = inject(ToastrService);
   isLoading = signal(false);
     userProvider = inject(UserProvider);
 
@@ -26,11 +28,11 @@ export class Login {
       this.isLoading.set(false);
       console.log(this.loginForm.value);
       this.userProvider.login(this.loginForm.value.email!, this.loginForm.value.password!);
-      console.log(this.userProvider.user());
-      if(this.userProvider.user() != null){
+      if(this.userProvider.users().find((user) => user.email === this.loginForm.value.email && user.password === this.loginForm.value.password) != null){
+        this.toastr.success('Login successful');
         this.router.navigate(['/dashboard']);
       }
-    }, 2000);
+    }, 1000);
 
   }
 }

@@ -1,1 +1,21 @@
-<p>setting works!</p>
+<div class="setting-container">
+    <div class="card setting-card">
+        <div class="card-header">
+            <h3>dashboard Settings</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="settingForm" (ngSubmit)="onSave()">
+                <div class="mb-3">
+                    <label for="dashboardTitle" class="form-label">Dashboard Title</label>
+                    <input type="text" formControlName="dashboardTitle" class="form-control" id="dashboardTitle">
+                </div>
+                <div class="mb-3">
+                    <label for="overviewCardLimit" class="form-label">Overview Card Limit</label>
+                    <input type="number" formControlName="overviewCardLimit" class="form-control"
+                        id="overviewCardLimit">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+            </form>
+        </div>
+    </div>
+</div>

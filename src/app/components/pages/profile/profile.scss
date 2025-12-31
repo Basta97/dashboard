@@ -1,0 +1,42 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+
+    .profile-card {
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: none;
+
+        .card-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem;
+
+            h3 {
+                margin: 0;
+            }
+        }
+
+        .card-body {
+            padding: 2rem;
+
+            .mb-3 {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                label {
+                    color: var(--dark-color);
+                }
+            }
+        }
+    }
+}

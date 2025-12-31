@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class UserProvider {
-  user = signal<User | null>(null);
   users = signal<User[]>([]);
   constructor(private router: Router) {
     this.users.set([
@@ -20,6 +19,7 @@ export class UserProvider {
     this.users.update((users) => [...users, user]);
     console.log(this.users());
     console.log("registered successfully")
+    console.log(this.users());
   }
   login(email: string, password: string) {
     const user = this.users().find((user) => user.email === email && user.password === password);
@@ -27,8 +27,7 @@ export class UserProvider {
       localStorage.setItem('user', JSON.stringify(user.id));
       localStorage.setItem('role', JSON.stringify(user.role));
       localStorage.setItem('name', JSON.stringify(user.name));
-      this.user.set(user);
-
+    console.log(this.users());
       return user;
 
     }
@@ -39,7 +38,6 @@ export class UserProvider {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     localStorage.removeItem('name');
-    this.user.set(null);
     this.router.navigate(['/login']);
   }
   
