@@ -37,6 +37,12 @@
         <span>Notes</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/dashboard/meeting" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+        <i class="icon">📅</i>
+        <span>Meetings</span>
+      </a>
+    </li>
   </ul>
   <div class="text-center">
     <span>{{ dataprovider.formattedTime() }}</span>

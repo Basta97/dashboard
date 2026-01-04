@@ -10,8 +10,7 @@
 }
 
 .content {
-  // height: 100vh; // removed as it is inside wraper
-  // flex: 2; // removed in favor of stretch
+
   display: flex;
   flex-direction: column;
   height: 100%;

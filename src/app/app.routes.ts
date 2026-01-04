@@ -55,6 +55,11 @@ export const routes: Routes = [
         canActivate: [authGuard]
       },
       {
+        path: 'meeting',
+        loadComponent: () => import('./components/pages/meeting/meeting').then(m => m.MeetingComponent),
+        canActivate: [authGuard]
+      },
+      {
         path: '',
         redirectTo: 'overview',
         pathMatch: 'full'

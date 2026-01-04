@@ -1,6 +1,22 @@
 <div class="floating-notes-wrapper" [ngClass]="{'open': isOpen()}">
     <div class="notes-list-container">
         <div class="list-header">
+            <h4>Upcoming Meetings</h4>
+            <span class="count">{{ meetingProvider.meetings().length }}</span>
+        </div>
+        <div class="list-body">
+            @if (meetingProvider.meetings().length === 0) {
+            <p class="empty-state">No upcoming meetings.</p>
+            } @else {
+            @for (meeting of meetingProvider.meetings(); track meeting.id) {
+            <div class="note-item" style="border-left-color: var(--secondary-color);">
+                <p class="content"><strong>{{ meeting.subject }}</strong></p>
+                <small class="date">{{ meeting.date | date:'short' }}</small>
+            </div>
+            }
+            }
+        </div>
+        <div class="list-header">
             <h4>My Notes</h4>
             <span class="count">{{ noteProvider.notes().length }}</span>
         </div>

@@ -1,1 +1,31 @@
-<p>meeting works!</p>
+<div class="meeting-container">
+    <div class="header">
+        <h3>Meetings</h3>
+        <form [formGroup]="meetingForm" (ngSubmit)="addMeeting()" class="add-meeting-form">
+            <input type="text" formControlName="subject" class="form-control" placeholder="Subject" />
+            <input type="text" formControlName="goal" class="form-control" placeholder="Goal" />
+            <input type="datetime-local" formControlName="date" class="form-control" [min]="currentDate" />
+            <button type="submit" class="btn btn-primary" [disabled]="meetingForm.invalid">Add Meeting</button>
+        </form>
+    </div>
+
+    <div class="meeting-grid">
+        @for (meeting of meetingProvider.meetings(); track meeting.id) {
+        <div class="meeting-card">
+            <button class="delete-btn" (click)="deleteMeeting(meeting.id)">×</button>
+            <div class="meeting-content">
+                <div class="title-row">
+                    <h4>{{ meeting.subject }}</h4>
+                    @if (isLate(meeting.date)) {
+                    <span class="badge-late">Late</span>
+                    }
+                </div>
+                <p>{{ meeting.goal }}</p>
+            </div>
+            <div class="meeting-footer">
+                <small>{{ meeting.date | date:'medium' }}</small>
+            </div>
+        </div>
+        }
+    </div>
+</div>

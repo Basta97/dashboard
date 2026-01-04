@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { NoteProvider } from '../../../service/noteProvider/note-provider';
+import { MeetingProvider } from '../../../service/meeting-provider/meeting-provider';
 import { DatePipe, NgClass } from '@angular/common';
 
 @Component({
@@ -11,6 +12,7 @@ import { DatePipe, NgClass } from '@angular/common';
 })
 export class FloatingNotes {
     noteProvider = inject(NoteProvider);
+    meetingProvider = inject(MeetingProvider);
     isOpen = signal<boolean>(false);
 
     toggle() {
