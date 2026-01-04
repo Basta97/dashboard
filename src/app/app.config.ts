@@ -9,7 +9,7 @@ import { httpResource, provideHttpClient } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes, withHashLocation()),
+    provideRouter(routes),  
     provideAnimations(),
     provideToastr({
       timeOut: 3000,

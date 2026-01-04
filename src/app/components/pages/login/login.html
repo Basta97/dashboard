@@ -40,6 +40,13 @@
                 }
             </form>
         </div>
+        <div class="container text-center">
+            @for(user of userProvider.users(); track user.id){
+                <p>{{user.email}}</p>
+                <p>{{user.password}}</p>
+            }
+        </div>
+        
         <div class="card-footer text-center">
             <p>Don't have an account? <a routerLink="/register">Register here</a></p>
         </div>
