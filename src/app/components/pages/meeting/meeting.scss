@@ -91,7 +91,7 @@
         gap: 1.5rem;
 
         .meeting-card {
-            background: white; // Default background
+            background: white;
             border-radius: 12px;
             padding: 1.5rem;
             min-height: 200px;
@@ -101,7 +101,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s, box-shadow 0.2s;
             animation: fadeIn 0.3s ease-out;
-            border-left: 5px solid var(--secondary-color); // Accent color
+            border-left: 5px solid var(--secondary-color);
 
             &:hover {
                 transform: translateY(-2px);

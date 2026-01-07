@@ -43,6 +43,12 @@
         <span>Meetings</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/dashboard/play-ground" routerLinkActive="active" (click)="layoutService.closeSidebar()">
+        <i class="icon">🧠</i>
+        <span>playground</span>
+      </a>
+    </li>
   </ul>
   <div class="text-center">
     <span>{{ dataprovider.formattedTime() }}</span>

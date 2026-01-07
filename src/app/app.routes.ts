@@ -60,6 +60,11 @@ export const routes: Routes = [
         canActivate: [authGuard]
       },
       {
+        path: 'play-ground',
+        loadComponent: () => import('./components/pages/play-ground/play-ground').then(m => m.PlayGround),
+        canActivate: [authGuard]
+      },
+      {
         path: '',
         redirectTo: 'overview',
         pathMatch: 'full'

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MeetingProvider } from '../../../service/meeting-provider/meeting-provider';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-meeting',
@@ -15,7 +15,7 @@ export class MeetingComponent {
   fb = inject(FormBuilder);
   meetingForm: FormGroup;
 
-  currentDate = new Date().toISOString().slice(0, 16); // For min date in input
+  currentDate = new Date().toISOString().slice(0, 16);
 
   constructor() {
     this.meetingForm = this.fb.group({
