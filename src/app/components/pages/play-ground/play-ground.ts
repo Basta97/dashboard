@@ -99,7 +99,6 @@ export class PlayGround {
     this.task.set("")
   }
   doneTask(id: number) {
-
     setInterval(() => {
       this.taskList.update((pv) => pv.map((task) => task.id == id ? { ...task, isDone: !task.isDone } : task))
     }, 3000);

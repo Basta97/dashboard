@@ -15,25 +15,22 @@
     <span class="line"></span>
     <!-- templete to do list -->
     <h1>templete to do list</h1>
-    <input type="text" (input)="watchTask($event.target.value)" />
+    <input type="text" (input)="watchTask($event.target.value)" placeholder="Enter task" />
     <button type="button" (click)="addTask()">add task</button>
     <button type="button" (click)="showDoTask()">show done task</button>
 
     <div class="todo-list">
-        @for (task of taskList(); track task.id) {
-        @if(!task.isDone){
+        @for (task of taskList(); track task.id) { @if(!task.isDone){
         <div style="display: flex;" (click)="doneTask(task.id)">
             <label for="task{{task.id}}"> {{task.task}}</label>
             <input id="task{{task.id}}" type="checkbox" [checked]="task.isDone" (change)="task.isDone = !task.isDone" />
         </div>
-        }
-        @else if(showDoneTask()){
+        } @else if(showDoneTask()){
         <div>
             <label style="text-decoration: line-through;" for="task{{task.id}}"> {{task.task}}</label>
             <input id="task{{task.id}}" type="checkbox" [checked]="task.isDone" (change)="task.isDone = !task.isDone" />
         </div>
-        }
-        }
+        } }
     </div>
     <span class="line"></span>
     <!-- directive -->
@@ -46,8 +43,7 @@
 
     <!-- Dependency Injection -->
     <h1>Dependency Injection</h1>
-    <button type="button"
-        (click)="sharedData.setDataFromService({ product: 'chocklate', price: 10, quantity: 150 })">Update</button>
+    <button type="button" (click)="sharedData.setDataFromService({ product: 'chocklate', price: 10, quantity: 150 })">Update</button>
     <p>
         {{sharedData.getDataFromService()}}
     </p>

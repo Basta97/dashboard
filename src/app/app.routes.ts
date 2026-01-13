@@ -7,22 +7,24 @@ import { Register } from './components/pages/register/register';
 import { Content } from './components/layout/content/content';
 import { News } from './components/pages/news/news';
 import { Notes } from './components/pages/notes/notes';
-import { authGuard } from './auth-guard';
+import { authGuard, redirectLoggedInToMain } from './auth-guard';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 
   {
     path: 'login',
     component: Login,
+    canActivate: [redirectLoggedInToMain]
   },
   {
     path: 'register',
     component: Register,
+    canActivate: [redirectLoggedInToMain]
   },
 
   {
